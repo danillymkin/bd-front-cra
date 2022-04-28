@@ -1,0 +1,11 @@
+.or {
+  @apply text-sm text-gray-black px-4
+}
+
+.line {
+  @apply bg-gray-white text-gray-light w-full
+}
+
+.separator {
+  @apply flex justify-between items-center
+}

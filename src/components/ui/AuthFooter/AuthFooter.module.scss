@@ -1,0 +1,7 @@
+.footer {
+  @apply flex items-center justify-center w-full py-5 bg-gray-white text-gray-black gap-6
+}
+
+.link {
+  @apply font-semibold hover:text-purple transition
+}

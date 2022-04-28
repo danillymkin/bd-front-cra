@@ -1,0 +1,23 @@
+.filterItem {
+  @apply pb-4 border-b border-gray-light mt-5
+}
+
+.header {
+  @apply flex justify-between items-center cursor-pointer
+}
+
+.name {
+  @apply text-sm font-semibold select-none
+}
+
+.open {
+  @apply text-gray-black text-xl transition-colors duration-300
+}
+
+.active {
+  @apply text-purple
+}
+
+.content {
+  @apply flex flex-col gap-3.5 pt-4
+}

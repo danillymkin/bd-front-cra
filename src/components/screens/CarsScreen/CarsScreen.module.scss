@@ -1,0 +1,19 @@
+.layout {
+  @apply flex gap-20
+}
+
+.search {
+  @apply mb-12
+}
+
+.content {
+  @apply flex flex-col flex-1
+}
+
+.loader {
+  @apply w-full flex justify-center items-center
+}
+
+.pagination {
+  @apply mt-14
+}

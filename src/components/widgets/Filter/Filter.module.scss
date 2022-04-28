@@ -1,0 +1,11 @@
+.filter {
+  @apply max-w-[240px] w-full pt-5 select-none
+}
+
+.header {
+  @apply flex items-center gap-2.5 text-gray-black
+}
+
+.apply {
+  @apply w-full mt-6
+}

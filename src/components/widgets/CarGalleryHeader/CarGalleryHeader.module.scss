@@ -1,0 +1,11 @@
+.header {
+  @apply flex justify-between
+}
+
+.fraction {
+  @apply flex items-center gap-1.5 text-gray-black
+}
+
+.close {
+  @apply flex items-center gap-1.5 py-3 px-6 text-gray-black bg-gray-white text-sm rounded-1xl transition-colors hover:text-purple
+}

@@ -1,0 +1,15 @@
+.list {
+  @apply flex flex-col
+}
+
+.item {
+  @apply flex justify-between items-center py-3 text-sm
+}
+
+.item:not(:last-child) {
+  @apply border-b border-b-gray-light
+}
+
+.value {
+  @apply font-bold
+}

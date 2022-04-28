@@ -1,0 +1,11 @@
+.layout {
+  @apply flex flex-row h-screen
+}
+
+.main {
+  @apply flex flex-col flex-1
+}
+
+.content {
+  @apply flex flex-col flex-1 py-7 px-14 overflow-y-auto
+}

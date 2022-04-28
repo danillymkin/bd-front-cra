@@ -1,0 +1,11 @@
+.wrapper {
+  @apply w-full relative
+}
+
+.button {
+  @apply absolute z-10 w-9 h-9 flex items-center justify-center text-white bg-purple bottom-1/2 translate-y-1/2 left-3.5 rounded-[0.625rem]
+}
+
+.input {
+  @apply w-full h-14 pl-[4.5rem] text-sm font-semibold border-none drop-shadow-1xl rounded-xl
+}

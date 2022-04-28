@@ -1,0 +1,39 @@
+.input {
+  @apply border border-gray-light rounded-md select-none outline-none
+}
+
+.medium {
+  @apply text-sm px-2 py-1.5
+}
+
+.extraLarge {
+  @apply py-4 px-5
+}
+
+.widthFull {
+  @apply w-full
+}
+
+.withLabel {
+  @apply pt-8
+}
+
+.label {
+  @apply absolute text-sm text-gray-black top-2.5 left-5 pl-px
+}
+
+.wrap {
+  @apply relative
+}
+
+.icon {
+  @apply absolute right-4 bottom-1/2 translate-y-1/2 text-gray-black
+}
+
+.withIcon {
+  @apply pr-11
+}
+
+.error {
+  @apply text-sm mt-1.5 text-orange
+}

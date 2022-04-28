@@ -1,0 +1,7 @@
+.wrap {
+  @apply flex flex-col gap-2
+}
+
+.error {
+  @apply text-orange text-sm
+}

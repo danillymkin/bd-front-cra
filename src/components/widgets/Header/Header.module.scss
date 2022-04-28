@@ -1,0 +1,11 @@
+.header {
+  @apply flex justify-between py-8 px-14 shadow-md shadow-gray-white
+}
+
+.pageTitle {
+  @apply font-bold text-3xl
+}
+
+.login {
+  @apply text-sm text-black hover:text-purple transition duration-200
+}

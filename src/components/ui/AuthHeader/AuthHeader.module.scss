@@ -1,0 +1,15 @@
+.header {
+  @apply relative w-full flex justify-center items-center py-5 border-b border-b-gray-light
+}
+
+.title {
+  @apply font-bold text-lg
+}
+
+.close {
+  @apply absolute bottom-1/2 translate-y-1/2 right-6 cursor-pointer hover:text-purple transition
+}
+
+.prev {
+  @apply absolute bottom-1/2 translate-y-1/2 left-6 cursor-pointer hover:text-purple transition
+}

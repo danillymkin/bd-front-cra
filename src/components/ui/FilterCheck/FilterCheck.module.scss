@@ -1,0 +1,11 @@
+.filterCheck {
+  @apply flex gap-3.5 cursor-pointer
+}
+
+.text {
+  @apply text-gray-black text-sm
+}
+
+.active {
+  @apply font-semibold text-black
+}

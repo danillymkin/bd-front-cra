@@ -1,0 +1,31 @@
+.current {
+  @apply font-bold text-lg text-black
+}
+
+.slide {
+  @apply overflow-hidden select-none w-full
+}
+
+.imageWrapper {
+  @apply px-1 pt-1 rounded-2xl
+}
+
+.image {
+  @apply rounded-2xl object-cover w-full max-h-[660px]
+}
+
+.control {
+  @apply absolute cursor-pointer z-10 bottom-1/2 translate-y-1/2 text-gray-black bg-gray-white p-3.5 rounded-1xl transition-colors hover:text-purple
+}
+
+.prev {
+  @apply left-8
+}
+
+.next {
+  @apply right-8
+}
+
+.disable {
+  @apply text-gray-light hover:text-gray-light cursor-not-allowed
+}

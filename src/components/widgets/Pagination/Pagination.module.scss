@@ -1,0 +1,15 @@
+.pagination {
+  @apply flex gap-2 text-gray-black
+}
+
+.current {
+  @apply bg-purple text-white border-none
+}
+
+.disabled {
+  @apply bg-gray-white text-gray-medium
+}
+
+.dots {
+  @apply text-gray-black text-[20px]
+}

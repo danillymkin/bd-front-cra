@@ -1,0 +1,7 @@
+.loaderContainer {
+  @apply relative w-16 h-16
+}
+
+.loader {
+  @apply absolute rounded-full w-full h-full top-0 left-0 right-0 bottom-0 border-8 border-t-purple border-gray-white
+}

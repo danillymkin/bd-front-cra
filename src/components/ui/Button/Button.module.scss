@@ -1,0 +1,43 @@
+.button {
+  @apply relative text-sm px-5 rounded rounded-md transition-colors duration-200
+}
+
+.small {
+  @apply py-2.5
+}
+
+.medium {
+  @apply py-4
+}
+
+.primary {
+  @apply bg-purple text-white hover:bg-purple-dark
+}
+
+.default {
+  @apply border text-gray-black border-gray-light hover:text-white hover:bg-purple
+}
+
+.pagination {
+  @apply flex justify-center items-center border border-gray-light h-10 w-10 px-0 py-0 hover:text-white hover:bg-purple hover:border-none
+}
+
+.disabled {
+  @apply cursor-not-allowed bg-gray-light text-gray-black
+}
+
+.widthFull {
+  @apply w-full
+}
+
+.icon {
+  @apply absolute bottom-1/2 translate-y-1/2
+}
+
+.iconLeft {
+  @apply left-5
+}
+
+.iconRight {
+  @apply right-5
+}

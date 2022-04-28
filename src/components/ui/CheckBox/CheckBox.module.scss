@@ -1,0 +1,7 @@
+.checkbox {
+  @apply flex justify-center items-center w-5 h-5 text-[10px] text-white bg-gray-white rounded cursor-pointer border border-gray-white hover:border-mint
+}
+
+.checked {
+  @apply border-mint bg-mint
+}

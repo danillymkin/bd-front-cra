@@ -1,0 +1,15 @@
+.manufacturer {
+  @apply flex items-center
+}
+
+.logo {
+  @apply border border-gray-light rounded-md h-10 p-2
+}
+
+.info {
+  @apply ml-2.5
+}
+
+.name {
+  @apply text-sm
+}

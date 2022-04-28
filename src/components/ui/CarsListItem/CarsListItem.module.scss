@@ -1,0 +1,27 @@
+.car {
+  @apply flex items-center gap-6 border border-gray-light rounded-xl w-full p-3
+}
+
+.image {
+  @apply relative rounded-lg overflow-hidden w-full h-full max-h-40 max-w-[205px] cursor-pointer
+}
+
+.details {
+  @apply flex flex-col
+}
+
+.name {
+  @apply font-bold
+}
+
+.specifications {
+  @apply mt-1.5
+}
+
+.manufacturer {
+  @apply mt-4
+}
+
+.price {
+  @apply font-bold mt-5
+}
