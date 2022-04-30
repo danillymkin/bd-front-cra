@@ -1,13 +1,12 @@
 import { AuthState } from './authTypes';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AccessToken } from '../../services/auth/models/accessToken';
 import { ServerError } from '../../http/types/ServerError';
 import { LoginDto } from '../../services/auth/dto/loginDto';
 import AuthService from '../../services/auth/AuthService';
 import { RegisterDto } from '../../services/auth/dto/registerDto';
 import { AxiosResponse } from 'axios';
 import { ServerErrorData } from '../../http/types/ServerErrorData';
-import { User } from '../../services/auth/models/user';
+import { UserAndToken } from '../../services/auth/models/userAndToken';
 
 const initialState: AuthState = {
   loading: false,
@@ -16,11 +15,10 @@ const initialState: AuthState = {
   user: null,
 };
 
-export const login = createAsyncThunk<AccessToken,
+export const login = createAsyncThunk<UserAndToken,
   LoginDto,
   { rejectValue: ServerError }>('auth/login', async (loginDto, thunkApi) => {
   const response = await AuthService.login(loginDto);
-  // console.log(response);
   if (response.status >= 300) {
     const error = response as AxiosResponse<ServerErrorData>;
     return thunkApi.rejectWithValue({
@@ -29,10 +27,10 @@ export const login = createAsyncThunk<AccessToken,
       messages: error.data.messages,
     } as ServerError);
   }
-  return response.data as AccessToken;
+  return response.data as UserAndToken;
 });
 
-export const register = createAsyncThunk<AccessToken,
+export const register = createAsyncThunk<UserAndToken,
   RegisterDto,
   { rejectValue: ServerError }>('auth/register', async (registerDto, thunkApi) => {
   const response = await AuthService.register(registerDto);
@@ -40,19 +38,18 @@ export const register = createAsyncThunk<AccessToken,
     console.log(response.data);
     return thunkApi.rejectWithValue(response.data as ServerError);
   }
-  return response.data as AccessToken;
+  return response.data as UserAndToken;
 });
 
-export const profile = createAsyncThunk<User,
+export const refresh = createAsyncThunk<UserAndToken,
   void,
-  { rejectValue: ServerError }>('auth/profile', async (_, thunkApi) => {
-  const response = await AuthService.profile();
-  // console.log(response);
+  { rejectValue: ServerError }>('auth/refresh', async (_, thunkApi) => {
+  const response = await AuthService.refresh();
   if (response.status >= 300) {
     console.log(response.data);
     return thunkApi.rejectWithValue(response.data as ServerError);
   }
-  return response.data as User;
+  return response.data as UserAndToken;
 });
 
 export const authSlice = createSlice({
@@ -65,12 +62,15 @@ export const authSlice = createSlice({
     builder.addCase(login.pending, (state: AuthState) => {
       state.loading = true;
       state.error = null;
+      state.user = null;
     });
     builder.addCase(
       login.fulfilled,
-      (state: AuthState, action: PayloadAction<AccessToken>) => {
+      (state: AuthState, action: PayloadAction<UserAndToken>) => {
         state.loading = false;
         state.accessToken = action.payload.accessToken;
+        state.user = action.payload.user;
+        state.error = null;
       },
     );
     builder.addCase(login.rejected, (state: AuthState, action) => {
@@ -87,12 +87,15 @@ export const authSlice = createSlice({
     builder.addCase(register.pending, (state: AuthState) => {
       state.loading = true;
       state.error = null;
+      state.user = null;
     });
     builder.addCase(
       register.fulfilled,
-      (state: AuthState, action: PayloadAction<AccessToken>) => {
+      (state: AuthState, action: PayloadAction<UserAndToken>) => {
         state.loading = false;
         state.accessToken = action.payload.accessToken;
+        state.user = action.payload.user;
+        state.error = null;
       },
     );
     builder.addCase(register.rejected, (state: AuthState, action) => {
@@ -106,24 +109,27 @@ export const authSlice = createSlice({
       };
     });
 
-    builder.addCase(profile.pending, (state: AuthState) => {
+    builder.addCase(refresh.pending, (state: AuthState) => {
       state.loading = true;
       state.error = null;
+      state.user = null;
     });
     builder.addCase(
-      profile.fulfilled,
-      (state: AuthState, action: PayloadAction<User>) => {
+      refresh.fulfilled,
+      (state: AuthState, action: PayloadAction<UserAndToken>) => {
         state.loading = false;
-        state.user = action.payload;
+        state.accessToken = action.payload.accessToken;
+        state.user = action.payload.user;
+        state.error = null;
       },
     );
-    builder.addCase(profile.rejected, (state: AuthState, action) => {
+    builder.addCase(refresh.rejected, (state: AuthState, action) => {
       state.loading = false;
       state.error = {
-        error: action?.payload?.error || 'Unauthorized',
-        statusCode: action?.payload?.statusCode || 401,
-        messages: action?.payload?.messages || [
-          'Не удалось получить ваш профиль, попробуйте позже',
+        error: action.payload?.error || 'Unauthorized',
+        statusCode: action.payload?.statusCode || 401,
+        messages: action.payload?.messages || [
+          'Не удалось войти в аккаунт, попробуйте позже',
         ],
       };
     });

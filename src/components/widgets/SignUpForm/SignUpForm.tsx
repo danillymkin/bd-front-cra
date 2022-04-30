@@ -8,6 +8,11 @@ import Button from '../../ui/Button/Button';
 import FormikInput from '../../ui/FormikInput/FormikInput';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { register } from '../../../store/auth/authSlice';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
+import FormErrors from '../../ui/FormErrors/FormErrors';
+import { useUpdateEffect } from 'usehooks-ts';
+import { ACCESS_TOKEN_KEY } from '../../../constants/localStorage';
+import { useNavigate } from 'react-router-dom';
 
 interface SignUpFormProps {
   onNext: () => void;
@@ -25,6 +30,9 @@ interface SignUpFormValues {
 
 const SignUpForm: FunctionComponent<Props> = ({ onNext }): JSX.Element => {
   const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
+  const { error, accessToken } = useTypedSelector(state => state.auth);
+
   const initialFormValues: SignUpFormValues = {
     email: '',
     firstName: '',
@@ -32,6 +40,13 @@ const SignUpForm: FunctionComponent<Props> = ({ onNext }): JSX.Element => {
     password: '',
     confirm: '',
   };
+
+  useUpdateEffect(() => {
+    if (accessToken) {
+      localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
+      navigate('/', { replace: true });
+    }
+  }, [accessToken]);
 
   return (
     <Formik
@@ -56,7 +71,6 @@ const SignUpForm: FunctionComponent<Props> = ({ onNext }): JSX.Element => {
           .required('Обязательное поле'),
       })}
       onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2));
         const { confirm, ...registerDto } = values;
         dispatch(register(registerDto));
         onNext();
@@ -123,6 +137,8 @@ const SignUpForm: FunctionComponent<Props> = ({ onNext }): JSX.Element => {
               icon={<FaCheckCircle />}
             />
           </div>
+
+          {error?.messages && <FormErrors error={error.messages} />}
 
           <Button
             disabled={!isValid || isSubmitting}

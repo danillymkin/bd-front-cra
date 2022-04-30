@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { AccessToken } from '../services/auth/models/accessToken';
 import { ACCESS_TOKEN_KEY } from '../constants/localStorage';
+import { UserAndToken } from '../services/auth/models/userAndToken';
 
 export const STATIC_URL = 'http://localhost:5000';
 export const API_URL = `${STATIC_URL}/api`;
@@ -32,7 +32,7 @@ $api.interceptors.response.use(
     ) {
       originalRequest._isRetry = true;
       try {
-        const response = await axios.get<AccessToken>(
+        const response = await axios.get<UserAndToken>(
           `${API_URL}/auth/refresh`,
           {
             withCredentials: true,

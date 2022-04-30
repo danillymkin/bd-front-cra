@@ -9,7 +9,7 @@ import classes from './SignInForm.module.scss';
 import Button from '../../ui/Button/Button';
 import FormikInput from '../../ui/FormikInput/FormikInput';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
-import { login, profile } from '../../../store/auth/authSlice';
+import { login } from '../../../store/auth/authSlice';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import FormErrors from '../../ui/FormErrors/FormErrors';
 import { ACCESS_TOKEN_KEY } from '../../../constants/localStorage';
@@ -32,7 +32,6 @@ const SignInForm: FunctionComponent = (): JSX.Element => {
   useUpdateEffect(() => {
     if (accessToken) {
       localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
-      dispatch(profile());
       navigate('/', { replace: true });
     }
   }, [accessToken]);
@@ -49,7 +48,6 @@ const SignInForm: FunctionComponent = (): JSX.Element => {
           .required('Обязательное поле'),
       })}
       onSubmit={(values) => {
-        console.log(values);
         dispatch(login(values));
       }}
     >
