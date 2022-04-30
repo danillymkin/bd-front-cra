@@ -3,6 +3,7 @@ import { FaGoogle, FaTwitter, FaFacebookF } from 'react-icons/fa';
 
 import classes from './SignInSocial.module.scss';
 import Button from '../../ui/Button/Button';
+import { API_URL } from '../../../http';
 
 const SignInSocial: FunctionComponent = (): JSX.Element => {
   return (
@@ -12,7 +13,7 @@ const SignInSocial: FunctionComponent = (): JSX.Element => {
         size={'m'}
         className={classes.button}
       >
-        Войти с помощью Google
+        <a href={`${API_URL}/auth/google`}>Войти с помощью Google</a>
       </Button>
 
       <Button
