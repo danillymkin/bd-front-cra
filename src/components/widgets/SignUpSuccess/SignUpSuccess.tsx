@@ -9,7 +9,7 @@ import { MAIN_ROUTE } from '../../../constants/routes';
 const SignUpSuccess: FunctionComponent = (): JSX.Element => {
   return (
     <>
-      <img src={success} alt={'SignUpSuccess'} />
+      <img src={success} alt={'Успех'} className={classes.img} />
 
       <div className={classes.textContent}>
         <h2 className={classes.title}>Спасибо!</h2>

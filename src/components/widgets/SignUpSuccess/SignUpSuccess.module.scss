@@ -2,6 +2,10 @@
   @apply flex flex-col items-center justify-center px-16 py-8 gap-7
 }
 
+.img {
+  @apply max-w-[180px]
+}
+
 .textContent {
   @apply flex flex-col gap-2 items-center
 }
