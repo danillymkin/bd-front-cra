@@ -1,15 +1,9 @@
 import React from 'react';
 import AppRouter from './components/widgets/AppRouter/AppRouter';
-import { useTypedDispatch } from './hooks/useTypedDispatch';
-import { ACCESS_TOKEN_KEY } from './constants/localStorage';
-import { profile } from './store/auth/authSlice';
+import { useRefresh } from './hooks/useRefresh';
 
 function App() {
-  const dispatch = useTypedDispatch();
-
-  if (localStorage.getItem(ACCESS_TOKEN_KEY)) {
-    dispatch(profile());
-  }
+  useRefresh();
 
   return (
     <AppRouter />
