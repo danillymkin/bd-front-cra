@@ -11,11 +11,11 @@
 }
 
 .bottom {
-  @apply bottom-0 left-0 right-0 -translate-y-0
+  @apply bottom-0 left-0 right-0 translate-y-full
 }
 
 .top {
-  @apply top-0 left-0 right-0 translate-y-0
+  @apply top-0 left-0 right-0 -translate-y-full
 }
 
 .open {
