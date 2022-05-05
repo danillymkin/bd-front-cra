@@ -17,7 +17,7 @@ interface InputProps
   value: string;
   onChange: (value: string) => void;
   label?: string;
-  size?: 'm' | 'xl';
+  size?: 'm' | 'xl' | 'none';
   width?: 'default' | 'full';
   clearable?: boolean;
   icon?: JSX.Element;

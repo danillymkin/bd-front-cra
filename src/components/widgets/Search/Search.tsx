@@ -19,6 +19,7 @@ const Search: FunctionComponent = (): JSX.Element => {
 
       <Input
         type='text'
+        size={'none'}
         value={searchValue}
         onChange={onChange}
         className={classes.input}
