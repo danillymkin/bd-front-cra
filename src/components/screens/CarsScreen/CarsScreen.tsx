@@ -54,7 +54,7 @@ const CarsScreen: FunctionComponent = (): JSX.Element => {
         position={matchesSm ? 'right' : 'bottom'}
         className={classes.drawer}
       >
-        <Filter />
+        <Filter isMobile={!matchesSm} onClose={toggleDrawer} />
       </Drawer>
     </DashboardLayout>
   );
