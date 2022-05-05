@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { FaFilter } from 'react-icons/fa';
+import classNames from 'classnames/bind';
 
 import classes from './Filter.module.scss';
 import Button from '../../ui/Button/Button';
@@ -16,9 +17,22 @@ import FilterColor from '../../ui/Filter/FilterColor/FilterColor';
 import FilterPrice from '../../ui/Filter/FilterPrice/FilterPrice';
 import FilterItem from '../../ui/FilterItem/FilterItem';
 
-const Filter: FunctionComponent = (): JSX.Element => {
+interface FilterProps {
+  className?: string;
+}
+
+type Props = FilterProps
+
+const cx = classNames.bind(classes);
+
+const Filter: FunctionComponent<Props> = ({ className = '' }): JSX.Element => {
+  const filterClasses = cx({
+    filter: true,
+    [className]: className,
+  });
+
   return (
-    <aside className={classes.filter}>
+    <aside className={filterClasses}>
       <div className={classes.header}>
         <FaFilter />
 
@@ -71,7 +85,7 @@ const Filter: FunctionComponent = (): JSX.Element => {
         </FilterItem>
       </div>
 
-      <Button variant={'primary'} className={classes.apply}>
+      <Button variant={'primary'} size={'m'} className={classes.apply}>
         Применить
       </Button>
     </aside>
