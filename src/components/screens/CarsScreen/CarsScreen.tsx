@@ -1,11 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 
 import classes from './CarsScreen.module.scss';
 import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import CarsList from '../../widgets/CarsList/CarsList';
 import Pagination from '../../widgets/Pagination/Pagination';
-import Filter from '../../widgets/Filter/Filter';
-import Search from '../../widgets/Search/Search';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useEffectOnce } from 'usehooks-ts';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
@@ -23,10 +21,15 @@ type Props = CarsScreenProps;
 const CarsScreen: FunctionComponent<Props> = (): JSX.Element => {
   const dispatch = useTypedDispatch();
   const { cars, totalCars, loading } = useTypedSelector(state => state.cars);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   useEffectOnce(() => {
     dispatch(fetchAllCars());
   });
+
+  const toggleDrawer = () => {
+    setDrawerOpen(!drawerOpen);
+  };
 
   return (
     <DashboardLayout pageTitle='Автомобили'>
@@ -50,7 +53,14 @@ const CarsScreen: FunctionComponent<Props> = (): JSX.Element => {
           />
         </div>
 
-        <Filter />
+        <Drawer
+          isOpen={drawerOpen}
+          onClose={toggleDrawer}
+          position={'right'}
+          className={classes.drawer}
+        >
+          <Filter className={classes.filter} />
+        </Drawer>
       </div>
     </DashboardLayout>
   );
