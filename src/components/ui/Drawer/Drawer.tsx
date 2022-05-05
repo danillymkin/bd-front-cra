@@ -7,7 +7,7 @@ interface DrawerProps {
   isOpen: boolean;
   className?: string;
   onClose: () => void;
-  position: 'left' | 'right' | 'bottom' | 'top';
+  position: 'left' | 'right' | 'bottom';
   children?: ReactNode;
 }
 
