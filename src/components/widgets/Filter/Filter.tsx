@@ -18,6 +18,8 @@ import FilterPrice from '../../ui/Filter/FilterPrice/FilterPrice';
 import FilterItem from '../../ui/FilterItem/FilterItem';
 
 interface FilterProps {
+  onClose: () => void;
+  isMobile: boolean;
   className?: string;
 }
 
@@ -25,7 +27,7 @@ type Props = FilterProps
 
 const cx = classNames.bind(classes);
 
-const Filter: FunctionComponent<Props> = ({ className = '' }): JSX.Element => {
+const Filter: FunctionComponent<Props> = ({ isMobile, onClose, className = '' }): JSX.Element => {
   const filterClasses = cx({
     filter: true,
     [className]: className,
@@ -34,9 +36,17 @@ const Filter: FunctionComponent<Props> = ({ className = '' }): JSX.Element => {
   return (
     <aside className={filterClasses}>
       <div className={classes.header}>
-        <FaFilter />
+        <div className={classes.title}>
+          <FaFilter />
 
-        <span>Фильтры</span>
+          <span>Фильтры</span>
+        </div>
+
+        {isMobile && (
+          <Button variant={'ghost'} onClick={onClose}>
+            Закрыть
+          </Button>
+        )}
       </div>
 
       <div>
