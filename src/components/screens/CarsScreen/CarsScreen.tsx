@@ -11,6 +11,9 @@ import { useEffectOnce } from 'usehooks-ts';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { fetchAllCars } from '../../../store/cars/carsSlice';
 import Loader from '../../ui/Loader/Loader';
+import SearchCar from '../../widgets/SearchCar/SearchCar';
+import Drawer from '../../ui/Drawer/Drawer';
+import Filter from '../../widgets/Filter/Filter';
 
 interface CarsScreenProps {
 }
@@ -27,9 +30,7 @@ const CarsScreen: FunctionComponent<Props> = (): JSX.Element => {
 
   return (
     <DashboardLayout pageTitle='Автомобили'>
-      <div className={classes.search}>
-        <Search />
-      </div>
+      <SearchCar onShowFilter={toggleDrawer} />
 
       <div className={classes.layout}>
         <div className={classes.content}>
