@@ -19,7 +19,7 @@
 }
 
 .open {
-  @apply translate-x-0 translate-y-0
+  @apply translate-x-0 sm:translate-y-0 translate-y-[7%]
 }
 
 .backdrop {
@@ -27,5 +27,5 @@
 }
 
 .backdropOpen {
-  @apply visible z-10
+  @apply visible z-10 bg-opacity-30 bg-black sm:bg-opacity-0
 }
