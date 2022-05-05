@@ -31,33 +31,31 @@ const CarsScreen: FunctionComponent = (): JSX.Element => {
     <DashboardLayout pageTitle='Автомобили'>
       <SearchCar onShowFilter={toggleDrawer} />
 
-      <div className={classes.layout}>
-        <div className={classes.content}>
-          {loading ? (
-            <div className={classes.loader}>
-              <Loader />
-            </div>
-          ) : (
-            <CarsList cars={cars} />
-          )}
+      <div className={classes.content}>
+        {loading ? (
+          <div className={classes.loader}>
+            <Loader />
+          </div>
+        ) : (
+          <CarsList cars={cars} />
+        )}
 
-          <Pagination
-            total={totalCars}
-            pageSize={10}
-            currentPage={1}
-            className={classes.pagination}
-          />
-        </div>
-
-        <Drawer
-          isOpen={drawerOpen}
-          onClose={toggleDrawer}
-          position={matchesSm ? 'right' : 'bottom'}
-          className={classes.drawer}
-        >
-          <Filter />
-        </Drawer>
+        <Pagination
+          total={totalCars}
+          pageSize={10}
+          currentPage={1}
+          className={classes.pagination}
+        />
       </div>
+
+      <Drawer
+        isOpen={drawerOpen}
+        onClose={toggleDrawer}
+        position={matchesSm ? 'right' : 'bottom'}
+        className={classes.drawer}
+      >
+        <Filter />
+      </Drawer>
     </DashboardLayout>
   );
 };
