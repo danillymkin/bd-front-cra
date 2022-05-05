@@ -4,7 +4,7 @@ import classes from './Button.module.scss';
 import classNames from 'classnames/bind';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'primary' | 'pagination';
+  variant?: 'default' | 'primary' | 'pagination' | 'ghost';
   className?: string;
   width?: 'default' | 'full';
   size?: 's' | 'm';
@@ -32,29 +32,21 @@ const Button: FunctionComponent<Props> = ({
     button: true,
     primary: variant === 'primary',
     default: variant === 'default',
-    disabled: disabled,
     pagination: variant === 'pagination',
+    ghost: variant === 'ghost',
+    disabled: disabled,
     widthFull: width === 'full',
     small: size === 's',
     medium: size === 'm',
+    withIcon: leftIcon || rightIcon,
     [className]: className,
-  });
-
-  const leftIconClasses = cx({
-    icon: true,
-    iconLeft: true,
-  });
-
-  const rightIconClasses = cx({
-    icon: true,
-    iconRight: true,
   });
 
   return (
     <button className={buttonClasses} {...props}>
-      {leftIcon && <div className={leftIconClasses}>{leftIcon}</div>}
+      {leftIcon && <div>{leftIcon}</div>}
       {children}
-      {rightIcon && <div className={rightIconClasses}>{rightIcon}</div>}
+      {rightIcon && <div>{rightIcon}</div>}
     </button>
   );
 };
