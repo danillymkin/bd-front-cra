@@ -13,12 +13,7 @@ import SearchCar from '../../widgets/SearchCar/SearchCar';
 import Drawer from '../../ui/Drawer/Drawer';
 import Filter from '../../widgets/Filter/Filter';
 
-interface CarsScreenProps {
-}
-
-type Props = CarsScreenProps;
-
-const CarsScreen: FunctionComponent<Props> = (): JSX.Element => {
+const CarsScreen: FunctionComponent = (): JSX.Element => {
   const dispatch = useTypedDispatch();
   const { cars, totalCars, loading } = useTypedSelector(state => state.cars);
   const [drawerOpen, setDrawerOpen] = useState(false);
