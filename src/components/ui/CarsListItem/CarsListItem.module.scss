@@ -1,13 +1,21 @@
 .car {
-  @apply flex items-center gap-6 border border-gray-light rounded-xl w-full p-3
+  @apply flex flex-col items-center gap-3.5 border border-gray-light rounded-xl w-full p-3.5
+}
+
+.imageLink {
+  @apply relative rounded-lg overflow-hidden w-full h-full max-h-52 cursor-pointer
 }
 
 .image {
-  @apply relative rounded-lg overflow-hidden w-full h-full max-h-40 max-w-[205px] cursor-pointer
+  @apply w-full h-full object-cover
 }
 
 .details {
-  @apply flex flex-col
+  @apply flex flex-col w-full
+}
+
+.mileage {
+  @apply text-gray-black text-sm mt-px
 }
 
 .name {
@@ -15,7 +23,7 @@
 }
 
 .specifications {
-  @apply mt-1.5
+  @apply mt-4
 }
 
 .manufacturer {

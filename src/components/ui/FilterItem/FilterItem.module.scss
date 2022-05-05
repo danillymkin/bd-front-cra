@@ -1,5 +1,5 @@
 .filterItem {
-  @apply pb-4 border-b border-gray-light mt-5
+  @apply py-5
 }
 
 .header {
@@ -7,7 +7,7 @@
 }
 
 .name {
-  @apply text-sm font-semibold select-none
+  @apply text-sm select-none
 }
 
 .open {
