@@ -5,7 +5,7 @@ import DashboardLayout from '../../layouts/DashboardLayout/DashboardLayout';
 import CarsList from '../../widgets/CarsList/CarsList';
 import Pagination from '../../widgets/Pagination/Pagination';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
-import { useEffectOnce } from 'usehooks-ts';
+import { useEffectOnce, useMediaQuery } from 'usehooks-ts';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
 import { fetchAllCars } from '../../../store/cars/carsSlice';
 import Loader from '../../ui/Loader/Loader';
@@ -17,6 +17,7 @@ const CarsScreen: FunctionComponent = (): JSX.Element => {
   const dispatch = useTypedDispatch();
   const { cars, totalCars, loading } = useTypedSelector(state => state.cars);
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const matchesSm = useMediaQuery('(min-width: 640px)');
 
   useEffectOnce(() => {
     dispatch(fetchAllCars());
@@ -51,10 +52,10 @@ const CarsScreen: FunctionComponent = (): JSX.Element => {
         <Drawer
           isOpen={drawerOpen}
           onClose={toggleDrawer}
-          position={'right'}
+          position={matchesSm ? 'right' : 'bottom'}
           className={classes.drawer}
         >
-          <Filter className={classes.filter} />
+          <Filter />
         </Drawer>
       </div>
     </DashboardLayout>
