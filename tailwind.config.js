@@ -20,6 +20,9 @@ module.exports = {
       sans: ['Inter', 'sans-serif'],
     },
     extend: {
+      screens: {
+        'smh': '870px',
+      },
       dropShadow: {
         '1xl': '0 3px 4px rgba(153, 155, 168, 0.15)',
       },
