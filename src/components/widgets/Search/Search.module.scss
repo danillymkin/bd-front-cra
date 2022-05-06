@@ -7,5 +7,5 @@
 }
 
 .input {
-  @apply w-full h-14 pl-[4.5rem] text-sm font-semibold border-none drop-shadow-1xl rounded-xl
+  @apply w-full h-14 pl-[4.5rem] text-sm font-semibold border-b border-gray-light sm:border-none sm:drop-shadow-1xl rounded-t-lg sm:rounded-lg
 }
