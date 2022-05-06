@@ -3,12 +3,13 @@
 }
 
 .icon {
+  @apply max-w-[240px]
 }
 
 .title {
-  @apply mt-7 font-bold text-4xl
+  @apply mt-7 font-bold text-3xl sm:text-4xl
 }
 
 .text {
-  @apply mt-3 max-w-[300px] text-center text-gray-black
+  @apply mt-3 max-w-[300px] text-sm sm:text-base text-center text-gray-black
 }
