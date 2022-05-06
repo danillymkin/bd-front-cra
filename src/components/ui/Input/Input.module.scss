@@ -1,13 +1,13 @@
 .input {
-  @apply border border-gray-light rounded-md select-none outline-none
+  @apply select-none outline-none
 }
 
 .medium {
-  @apply text-sm px-2 py-1.5
+  @apply text-sm px-2 py-1.5 border border-gray-light rounded-md
 }
 
 .extraLarge {
-  @apply py-4 px-5
+  @apply py-4 px-5 border border-gray-light rounded-md
 }
 
 .widthFull {
