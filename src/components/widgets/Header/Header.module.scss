@@ -1,9 +1,9 @@
 .header {
-  @apply flex justify-between py-8 px-14 shadow-md shadow-gray-white
+  @apply flex justify-center items-center sm:justify-between py-5 sm:py-8 sm:px-14 sm:shadow-md shadow-gray-white
 }
 
 .pageTitle {
-  @apply font-bold text-3xl
+  @apply font-bold text-2xl sm:text-3xl
 }
 
 .login {
