@@ -25,10 +25,12 @@ const CarsListItem: FunctionComponent<Props> = ({ car }): JSX.Element => {
     mileage,
     transmission,
     images,
+    fuel,
   } = car;
   const specifications: string[] = [
     drive,
     transmission,
+    fuel,
   ];
 
   return (

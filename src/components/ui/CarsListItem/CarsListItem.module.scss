@@ -1,9 +1,9 @@
 .car {
-  @apply flex flex-col items-center gap-3.5 border border-gray-light rounded-xl w-full p-3.5
+  @apply flex flex-col items-center gap-3.5 sm:border border-gray-light rounded-xl w-full sm:p-3.5
 }
 
 .imageLink {
-  @apply relative rounded-lg overflow-hidden w-full h-full max-h-52 cursor-pointer
+  @apply relative rounded-lg overflow-hidden w-full h-full max-h-80 sm:max-h-52 cursor-pointer
 }
 
 .image {
@@ -23,13 +23,9 @@
 }
 
 .specifications {
-  @apply mt-4
-}
-
-.manufacturer {
-  @apply mt-4
+  @apply mt-3 sm:mt-4
 }
 
 .price {
-  @apply font-bold mt-5
+  @apply font-bold mt-3 sm:mt-5
 }
