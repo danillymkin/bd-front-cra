@@ -7,7 +7,11 @@
 }
 
 .link {
-  @apply inline-flex items-center py-5 text-gray-black hover:text-purple text-sm font-semibold w-full inline-block pl-7 transition duration-300
+  @apply inline-flex items-center py-5 text-gray-black hover:text-purple text-sm font-semibold w-full pl-7 transition duration-300
+}
+
+.linkMobile {
+  @apply pl-0 justify-center
 }
 
 .activeLink {

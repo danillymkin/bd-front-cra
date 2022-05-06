@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import { FaCar, FaFileAlt, FaHandshake, FaHome } from 'react-icons/fa';
+import { useMediaQuery } from 'usehooks-ts';
+import classNames from 'classnames/bind';
 
 import classes from './Sidebar.module.scss';
 import { SidebarMenuType } from '../../ui/Sidebar/SidebarMenu/SidebarMenuType';
 import SidebarMenu from '../../ui/Sidebar/SidebarMenu/SidebarMenu';
 import SidebarHeader from '../../ui/Sidebar/SidebarHeader/SidebarHeader';
-import {
-  CARS_ROUTE,
-  CONTRACT_ROUTE,
-  MAIN_ROUTE,
-  REPORTS_ROUTE,
-} from '../../../constants/routes';
+import { CARS_ROUTE, CONTRACT_ROUTE, MAIN_ROUTE, REPORTS_ROUTE } from '../../../constants/routes';
+
+const cx = classNames.bind(classes);
 
 const Sidebar: FunctionComponent = (): JSX.Element => {
+  const matchesSmh = useMediaQuery('(min-width: 870px)');
+
   const menu: SidebarMenuType = [
     {
       name: 'Меню',
@@ -46,10 +47,15 @@ const Sidebar: FunctionComponent = (): JSX.Element => {
     },
   ];
 
+  const sidebarClasses = cx({
+    desktop: matchesSmh,
+    mobile: !matchesSmh,
+  });
+
   return (
-    <aside className={classes.sidebar}>
-      <SidebarHeader />
-      <SidebarMenu menu={menu} />
+    <aside className={sidebarClasses}>
+      {matchesSmh && <SidebarHeader />}
+      <SidebarMenu menu={menu} isMobile={!matchesSmh} />
     </aside>
   );
 };

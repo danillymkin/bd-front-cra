@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 interface SidebarMenuItemProps {
   item: SidebarMenuItemType;
   active: string;
+  isMobile?: boolean;
 }
 
 type Props = SidebarMenuItemProps;
@@ -17,6 +18,7 @@ const cx = classNames.bind(classes);
 const SidebarMenuItem: FunctionComponent<Props> = ({
                                                      item,
                                                      active,
+                                                     isMobile = false,
                                                    }): JSX.Element => {
   const { name, to, icon } = item;
 
@@ -24,9 +26,9 @@ const SidebarMenuItem: FunctionComponent<Props> = ({
 
   return (
     <li className={cx({ item: true, activeItem: isActive })}>
-      <Link to={to} className={cx({ link: true, activeLink: isActive })}>
+      <Link to={to} className={cx({ link: true, linkMobile: isMobile, activeLink: isActive })}>
         {icon}
-        <span className={classes.name}>{name}</span>
+        {!isMobile && <span className={classes.name}>{name}</span>}
       </Link>
     </li>
   );

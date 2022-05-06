@@ -1,3 +1,7 @@
-.sidebar {
+.desktop {
   @apply flex flex-col w-80 h-screen relative z-10 bg-white border-r border-gray-light pl-7 pr-8 pt-8 pb-6
+}
+
+.mobile {
+  @apply fixed bottom-0 left-1/2 -translate-x-1/2 bg-white shadow-[0px_-6px_20px_rgba(13,10,25,0.1)] max-w-lg w-full pb-3 rounded-t-2xl
 }

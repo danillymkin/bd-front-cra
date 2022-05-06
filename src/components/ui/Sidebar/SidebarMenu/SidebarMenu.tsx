@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
 import { useUpdateEffect } from 'usehooks-ts';
+import classNames from 'classnames/bind';
 
 import classes from './SidebarMenu.module.scss';
 import { SidebarMenuSection } from '../SidebarMenuSection/SidebarMenuSection';
@@ -9,11 +10,14 @@ import { useLocation } from 'react-router-dom';
 
 interface SidebarMenuProps {
   menu: SidebarMenuType;
+  isMobile: boolean;
 }
 
 type Props = SidebarMenuProps;
 
-const SidebarMenu: FunctionComponent<Props> = ({ menu }): JSX.Element => {
+const cx = classNames.bind(classes);
+
+const SidebarMenu: FunctionComponent<Props> = ({ menu, isMobile }): JSX.Element => {
   const { pathname } = useLocation();
   const [active, setActive] = useState(pathname);
 
@@ -21,10 +25,16 @@ const SidebarMenu: FunctionComponent<Props> = ({ menu }): JSX.Element => {
     setActive(pathname);
   }, [pathname]);
 
+  const listClasses = cx({
+    desktop: !isMobile,
+    mobile: isMobile,
+  });
+
   return (
-    <ul className={classes.list}>
+    <ul className={listClasses}>
       {menu.map((section: SidebarMenuSectionType) => (
         <SidebarMenuSection
+          isMobile={isMobile}
           key={section.name}
           active={active}
           section={section}

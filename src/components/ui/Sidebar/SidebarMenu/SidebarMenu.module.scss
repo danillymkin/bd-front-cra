@@ -1,3 +1,7 @@
-.list {
+.desktop {
   @apply flex flex-col gap-2
+}
+
+.mobile {
+  @apply flex flex-row gap-4 py-3.5 px-3
 }
