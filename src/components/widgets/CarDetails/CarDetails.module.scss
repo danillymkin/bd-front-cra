@@ -1,5 +1,5 @@
 .layout {
-  @apply grid grid-cols-11 gap-7 mt-11 pb-10
+  @apply flex flex-col-reverse lg:grid lg:grid-cols-11 gap-7 mt-11 pb-10
 }
 
 .content {

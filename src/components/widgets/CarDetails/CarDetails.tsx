@@ -53,6 +53,7 @@ const CarDetails: FunctionComponent<Props> = ({ car }): JSX.Element => {
               <CarManufacturer
                 logo={`${STATIC_URL}/${car.manufacturer.logo}`}
                 name={car.manufacturer.name}
+                address={car.manufacturer.address}
               />
             </Link>
           </div>
