@@ -5,6 +5,7 @@ import classes from './CarManufacturer.module.scss';
 interface CarManufacturerProps {
   logo: string;
   name: string;
+  address: string;
 }
 
 type Props = CarManufacturerProps;
@@ -12,6 +13,7 @@ type Props = CarManufacturerProps;
 const CarManufacturer: FunctionComponent<Props> = ({
                                                      logo,
                                                      name,
+                                                     address,
                                                    }): JSX.Element => {
   return (
     <div className={classes.manufacturer}>
@@ -21,6 +23,7 @@ const CarManufacturer: FunctionComponent<Props> = ({
 
       <div className={classes.info}>
         <span className={classes.name}>{name}</span>
+        <span className={classes.address}>{address}</span>
       </div>
     </div>
   );

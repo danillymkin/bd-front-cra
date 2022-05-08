@@ -7,9 +7,13 @@
 }
 
 .info {
-  @apply ml-2.5
+  @apply ml-2.5 flex flex-col
 }
 
 .name {
   @apply text-sm
+}
+
+.address {
+  @apply text-xs font-normal text-gray-black
 }
