@@ -2,12 +2,16 @@
   @apply relative w-full max-h-[30.5rem] h-full grid grid-cols-11 grid-rows-2 gap-7 rounded-xl overflow-hidden
 }
 
-.image {
-  @apply relative col-span-4 overflow-hidden
+.imageContainer {
+  @apply relative col-span-4 overflow-hidden flex-1
 }
 
-.image:not(.once):first-child {
+.imageContainer:not(.once):first-child {
   @apply col-span-7 row-span-2
+}
+
+.image {
+  @apply object-cover w-full h-full
 }
 
 .once {
