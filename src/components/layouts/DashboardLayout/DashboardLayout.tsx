@@ -1,21 +1,26 @@
 import React, { FunctionComponent, ReactNode } from 'react';
+import { useMediaQuery } from 'usehooks-ts';
+import classNames from 'classnames/bind';
 
 import classes from './DashboardLayout.module.scss';
 import Sidebar from '../../widgets/Sidebar/Sidebar';
 import Header from '../../widgets/Header/Header';
 import Footer from '../../widgets/Footer/Footer';
-import { useMediaQuery } from 'usehooks-ts';
 
 interface DashboardLayoutProps {
   pageTitle: string;
   children: ReactNode;
+  showHeader?: boolean;
 }
 
 type Props = DashboardLayoutProps;
 
+const cx = classNames.bind(classes);
+
 const DashboardLayout: FunctionComponent<Props> = ({
                                                      pageTitle,
                                                      children,
+                                                     showHeader = true,
                                                    }): JSX.Element => {
   const matchesSm = useMediaQuery('(min-width: 640px)');
 
@@ -24,9 +29,14 @@ const DashboardLayout: FunctionComponent<Props> = ({
       <Sidebar />
 
       <main className={classes.main}>
-        <Header pageTitle={pageTitle} isMobile={!matchesSm} />
+        {showHeader && <Header pageTitle={pageTitle} isMobile={!matchesSm} />}
 
-        <div className={classes.content}>{children}</div>
+        <div className={cx({
+          content: true,
+          contentWithHeader: showHeader,
+        })}>
+          {children}
+        </div>
 
         <Footer />
       </main>
