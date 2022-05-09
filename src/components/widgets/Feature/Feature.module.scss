@@ -1,0 +1,11 @@
+.feature {
+  @apply flex items-center gap-3.5
+}
+
+.icon {
+  @apply p-2 bg-gray-white text-gray-black rounded-lg
+}
+
+.text {
+  @apply text-sm font-bold
+}
