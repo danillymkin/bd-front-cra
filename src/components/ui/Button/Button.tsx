@@ -1,7 +1,7 @@
 import React, { ButtonHTMLAttributes, FunctionComponent } from 'react';
+import classNames from 'classnames/bind';
 
 import classes from './Button.module.scss';
-import classNames from 'classnames/bind';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'default' | 'primary' | 'pagination' | 'ghost';
