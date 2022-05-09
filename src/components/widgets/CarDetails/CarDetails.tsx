@@ -1,14 +1,18 @@
 import React, { FunctionComponent } from 'react';
+import { MdDirectionsCar, MdLocalGasStation, MdOutlineAirlineSeatReclineNormal } from 'react-icons/md';
+import { useMediaQuery } from 'usehooks-ts';
+import { Link } from 'react-router-dom';
 
 import classes from './CarDetails.module.scss';
 import CarManufacturer from '../../ui/CarManufacturer/CarManufacturer';
 import CarSpecifications from '../CarSpecifications/CarSpecifications';
-
+import BuyCar from '../BuyCar/BuyCar';
+import Feature from '../Feature/Feature';
 import { STATIC_URL } from '../../../http';
 import { MANUFACTURERS_ROUTE } from '../../../constants/routes';
-import { Car } from '../../../services/car/models/car';
 import { priceFormatter } from '../../../helpers/priceFormatter';
-import { Link } from 'react-router-dom';
+import { Car } from '../../../services/car/models/car';
+import Button from '../../ui/Button/Button';
 
 interface CarDetailsProps {
   car: Car;
@@ -17,6 +21,9 @@ interface CarDetailsProps {
 type Props = CarDetailsProps;
 
 const CarDetails: FunctionComponent<Props> = ({ car }): JSX.Element => {
+  const matchesSmh = useMediaQuery('(min-width: 870px)');
+  const formattedPrice = priceFormatter.format(car.price);
+
   return (
     <div className={classes.layout}>
       <section className={classes.content}>
@@ -41,24 +48,40 @@ const CarDetails: FunctionComponent<Props> = ({ car }): JSX.Element => {
       </section>
 
       <aside className={classes.aside}>
-        <span className={classes.price}>
-          {priceFormatter.format(car.price)}
+        {matchesSmh && <span className={classes.price}>{formattedPrice}</span>}
 
-          <div className={classes.manufacturer}>
-            <span className={classes.manufacturerDescription}>
-              Производитель
-            </span>
+        <div className={classes.manufacturer}>
+          <span className={classes.description}>
+            Производитель
+          </span>
 
-            <Link to={`${MANUFACTURERS_ROUTE}/${car.manufacturer.id}`}>
-              <CarManufacturer
-                logo={`${STATIC_URL}/${car.manufacturer.logo}`}
-                name={car.manufacturer.name}
-                address={car.manufacturer.address}
-              />
-            </Link>
+          <Link to={`${MANUFACTURERS_ROUTE}/${car.manufacturer.id}`}>
+            <CarManufacturer
+              logo={`${STATIC_URL}/${car.manufacturer.logo}`}
+              name={car.manufacturer.name}
+              address={car.manufacturer.address}
+            />
+          </Link>
+        </div>
+
+        <div className={classes.features}>
+          <span className={classes.description}>
+            Особенности
+          </span>
+
+          <div className={classes.featuresList}>
+            <Feature icon={<MdDirectionsCar size={18} />} text={car.body} />
+            <Feature icon={<MdOutlineAirlineSeatReclineNormal size={18} />} text={'5 мест'} />
+            <Feature icon={<MdLocalGasStation size={18} />} text={'60 литров'} />
           </div>
-        </span>
+        </div>
+
+        <Button className={classes.buyBtn} variant={'primary'} size={'m'}>
+          Добавить в корзину
+        </Button>
       </aside>
+
+      {!matchesSmh && <BuyCar price={formattedPrice} />}
     </div>
   );
 };

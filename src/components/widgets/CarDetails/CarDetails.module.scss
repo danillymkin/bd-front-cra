@@ -1,9 +1,9 @@
 .layout {
-  @apply flex flex-col-reverse lg:grid lg:grid-cols-11 gap-7 mt-11 pb-10
+  @apply flex flex-col lg:grid lg:grid-cols-11 gap-7 mt-11 pb-36 smh:pb-10
 }
 
 .content {
-  @apply col-span-7
+  @apply col-span-7 xl:col-span-6
 }
 
 .title {
@@ -15,7 +15,7 @@
 }
 
 .aside {
-  @apply col-span-4
+  @apply col-span-4 xl:col-start-8 flex flex-col gap-6
 }
 
 .price {
@@ -23,9 +23,21 @@
 }
 
 .manufacturer {
-  @apply flex flex-col mt-6 gap-2.5
+  @apply flex flex-col gap-2.5
 }
 
-.manufacturerDescription {
+.description {
   @apply text-xs text-gray-black
+}
+
+.features {
+  @apply flex flex-col gap-3.5
+}
+
+.featuresList {
+  @apply flex flex-col gap-4
+}
+
+.buyBtn {
+  //@apply
 }

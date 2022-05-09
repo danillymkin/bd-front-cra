@@ -6,13 +6,14 @@ import CarPhotos from '../../widgets/CarPhotos/CarPhotos';
 import CarDetails from '../../widgets/CarDetails/CarDetails';
 import { useTypedSelector } from '../../../hooks/useTypedSelector';
 import { useTypedDispatch } from '../../../hooks/useTypedDispatch';
-import { useEffectOnce } from 'usehooks-ts';
+import { useEffectOnce, useMediaQuery } from 'usehooks-ts';
 import { fetchCarById } from '../../../store/cars/carsSlice';
 import { useParams } from 'react-router-dom';
 import Loader from '../../ui/Loader/Loader';
 
 const CarScreen: FunctionComponent = (): JSX.Element => {
   const { id } = useParams();
+  const matchesSm = useMediaQuery('(min-width: 640px)');
   const dispatch = useTypedDispatch();
   const { cars } = useTypedSelector(state => state.cars);
   const [car] = cars;
@@ -28,7 +29,7 @@ const CarScreen: FunctionComponent = (): JSX.Element => {
   }
 
   return (
-    <DashboardLayout pageTitle={car.name}>
+    <DashboardLayout pageTitle={car.name} showHeader={matchesSm}>
       <div className={classes.content}>
         <CarPhotos photos={car.images} />
 
