@@ -10,6 +10,7 @@ import { useEffectOnce, useMediaQuery } from 'usehooks-ts';
 import { fetchCarById } from '../../../store/cars/carsSlice';
 import { useParams } from 'react-router-dom';
 import Loader from '../../ui/Loader/Loader';
+import Back from '../../ui/Back/Back';
 
 const CarScreen: FunctionComponent = (): JSX.Element => {
   const { id } = useParams();
@@ -29,8 +30,10 @@ const CarScreen: FunctionComponent = (): JSX.Element => {
   }
 
   return (
-    <DashboardLayout pageTitle={car.name} showHeader={matchesSm}>
+    <DashboardLayout pageTitle={car.name} showHeader={matchesSm} resetSafeArea={!matchesSm}>
       <div className={classes.content}>
+        {!matchesSm && <Back className={classes.back} />}
+
         <CarPhotos photos={car.images} />
 
         <CarDetails car={car} />
