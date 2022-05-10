@@ -10,6 +10,7 @@ import Footer from '../../widgets/Footer/Footer';
 interface DashboardLayoutProps {
   pageTitle: string;
   children: ReactNode;
+  resetSafeArea?: boolean;
   showHeader?: boolean;
 }
 
@@ -20,6 +21,7 @@ const cx = classNames.bind(classes);
 const DashboardLayout: FunctionComponent<Props> = ({
                                                      pageTitle,
                                                      children,
+                                                     resetSafeArea,
                                                      showHeader = true,
                                                    }): JSX.Element => {
   const matchesSm = useMediaQuery('(min-width: 640px)');
@@ -34,6 +36,7 @@ const DashboardLayout: FunctionComponent<Props> = ({
         <div className={cx({
           content: true,
           contentWithHeader: showHeader,
+          resetSafeArea: resetSafeArea,
         })}>
           {children}
         </div>
