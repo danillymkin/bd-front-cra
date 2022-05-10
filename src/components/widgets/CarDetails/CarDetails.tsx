@@ -21,12 +21,19 @@ interface CarDetailsProps {
 type Props = CarDetailsProps;
 
 const CarDetails: FunctionComponent<Props> = ({ car }): JSX.Element => {
+  const matchesSm = useMediaQuery('(min-width: 640px)');
   const matchesSmh = useMediaQuery('(min-width: 870px)');
   const formattedPrice = priceFormatter.format(car.price);
 
   return (
     <div className={classes.layout}>
       <section className={classes.content}>
+        {!matchesSm &&
+          <h1 className={classes.name}>
+            {car.name}
+          </h1>
+        }
+
         <h2 className={classes.title}>What Is the 2021 BMW 2 Series?</h2>
 
         <p className={classes.text}>
@@ -76,9 +83,11 @@ const CarDetails: FunctionComponent<Props> = ({ car }): JSX.Element => {
           </div>
         </div>
 
-        <Button className={classes.buyBtn} variant={'primary'} size={'m'}>
-          Добавить в корзину
-        </Button>
+        {matchesSmh &&
+          <Button className={classes.buyBtn} variant={'primary'} size={'m'}>
+            Добавить в корзину
+          </Button>
+        }
       </aside>
 
       {!matchesSmh && <BuyCar price={formattedPrice} />}

@@ -1,5 +1,5 @@
 .gallery {
-  @apply relative w-full max-h-[30.5rem] h-full grid grid-cols-11 grid-rows-2 gap-7 rounded-xl overflow-hidden
+  @apply absolute left-0 top-0 right-0 sm:relative w-full max-h-80 sm:max-h-[30.5rem] h-full grid grid-cols-11 grid-rows-2 gap-7 sm:rounded-xl overflow-hidden
 }
 
 .imageContainer {
