@@ -6,7 +6,6 @@ import { Provider } from 'react-redux';
 import './index.scss';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
-import 'swiper/scss/effect-creative';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store';
