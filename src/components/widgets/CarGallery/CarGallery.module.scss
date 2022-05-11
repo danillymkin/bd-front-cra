@@ -1,7 +1,7 @@
 .gallery {
-  @apply relative w-[100vw] h-[100vh] bg-white p-8
+  @apply relative w-[100vw] h-[100vh] bg-white p-8 overflow-y-scroll sm:overflow-y-hidden
 }
 
 .slider {
-  @apply max-w-6xl mx-auto mt-10
+  @apply max-w-[90%] sm:max-w-xl md:max-w-2xl lg:max-w-4xl xl:max-w-6xl w-full max-h-[270px] sm:max-h-[430px] md:max-h-[520px] lg:max-h-[630px] h-full mx-auto absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
 }

@@ -61,19 +61,10 @@ const CarGallerySlider: FunctionComponent<Props> = ({
           currentClass: classes.current,
         }}
         grabCursor={true}
-        effect={'creative'}
-        creativeEffect={{
-          prev: {
-            shadow: true,
-            translate: [0, 0, -400],
-          },
-          next: {
-            translate: ['100%', 0, 0],
-          },
-        }}
         spaceBetween={50}
         slidesPerView={1}
         centeredSlides={true}
+        className={classes.swiper}
       >
         {photos.map((photo: Photo) => (
           <SwiperSlide key={photo.id} className={classes.slide}>
